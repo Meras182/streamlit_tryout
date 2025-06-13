@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Stlite App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.76.0/build/style.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.76.0/build/stlite.js";
+      mount(
+        `
+import streamlit as st
+import pandas as pd
+
+data = {
+    'Fruits': ['Apples', 'Bananas', 'Cherries', 'Dates'],
+    'Sales DE' : [65, 65, 20, 10],
+    'Sales FR': [55, 75, 30, 45]
+}
+df = pd.DataFrame(data)
+
+st.title('Sales by Fruits')
+st.bar_chart(df.set_index('Fruits'))
+`,
+        document.getElementById("root"),
+      );
+    </script>
+  </body>
+</html>
